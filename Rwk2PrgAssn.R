@@ -21,11 +21,11 @@ corr <- function(directory, threshold = 0) {
         df <- complete(directory)
         ids <- df[df["nobs"] > threshold, ]$id
         spec_files <- list.files(directory,full.names = TRUE)
-        corrr <- numeric()
+        corv <- numeric()
         for (i in ids) {
                 cordf <- read.csv(spec_files[i])
                 dff <- cordf[complete.cases(cordf), ]
-                corrr <- c(corrr, cor(dff$sulfate, dff$nitrate))
+                corv <- c(corv, cor(dff$sulfate, dff$nitrate))
         }
-        return(corrr)
+        return(corv)
 }
